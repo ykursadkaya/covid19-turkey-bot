@@ -75,7 +75,7 @@ Sends daily and total COVID-19 statistics in Turkey.
    pip3 install -r requirements.txt
    ```
 
-5. Run [script](./covidbot.py)
+5. Run [script](./main.py)
 
    ```bash
    python3 main.py
