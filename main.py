@@ -8,12 +8,19 @@ keysENtoTR = {'date': 'SON GÜNCELLENME TARİHİ',
               'daily': {'case': 'BUGÜNKÜ HASTA SAYISI', 'death': 'BUGÜNKÜ VEFAT SAYISI',
                         'recovered': 'BUGÜNKÜ İYİLEŞEN SAYISI', 'test': 'BUGÜNKÜ TEST SAYISI'},
               'total': {'case': 'TOPLAM HASTA SAYISI', 'death': 'TOPLAM VEFAT SAYISI',
-                  'icuPatient': 'TOPLAM YOĞUN BAKIM HASTA SAYISI', 'intubatedPatient': 'TOPLAM ENTUBE HASTA SAYISI',
-                  'pneumoniaPercent': 'HASTALARDA ZATÜRRE ORANI (%)', 'recovered': 'TOPLAM İYİLEŞEN HASTA SAYISI',
-                  'seriouslyIllPatient': 'AĞIR HASTA SAYISI', 'test': 'TOPLAM TEST SAYISI'}}
+                        'icuPatient': 'TOPLAM YOĞUN BAKIM HASTA SAYISI',
+                        'intubatedPatient': 'TOPLAM ENTUBE HASTA SAYISI', 'recovered': 'TOPLAM İYİLEŞEN HASTA SAYISI',
+                        'seriouslyIllPatient': 'AĞIR HASTA SAYISI', 'test': 'TOPLAM TEST SAYISI'},
+              'weekly': {'pneumoniaRate': 'BU HAFTAKİ HASTALARDA ZATÜRRE ORANI (%)',
+                         'hospitalBedOccupancyRate': 'BU HAFTAKİ YATAK DOLULUK ORANI (%)',
+                         'adultIcuOccupancyRate': 'BU HAFTAKİ ERİŞKİN YOĞUN BAKIM DOLULUK ORANI (%)',
+                         'ventilatorOccupancyRate': 'BU HAFTAKİ VENTİLATÖR DOLULUK ORANI (%)',
+                         'averageFiliationTime': 'BU HAFTAKİ ORTALAMA FİLYASYON SÜRESİ (saat)',
+                         'averagePositiveContactDetectionTime': 'BU HAFTAKİ ORTALAMA TEMASLI TESPİT SÜRESİ (saat)',
+                         'filiationRate': 'BU HAFTAKİ FİLYASYON ORANI (%)'}}
 checkInterval = 1 * 60 # seconds
 apiURL = os.getenv('COVIDAPI_URL', 'http://localhost:5000')
-apiEndpoint = '/today_all'
+apiEndpoint = '/today-all'
 telegramAPIToken = os.getenv('TELEGRAM_API_TOKEN', '')
 telegramChatID = os.getenv('TELEGRAM_CHAT_ID', '')
 
