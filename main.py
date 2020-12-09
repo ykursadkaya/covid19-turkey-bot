@@ -5,9 +5,10 @@ lastStats = {}
 monthsIndexToTR = {'01': 'OCAK', '02': 'ŞUBAT', '03': 'MART', '04': 'NİSAN', '05': 'MAYIS', '06': 'HAZİRAN',
                    '07': 'TEMMUZ', '08': 'AĞUSTOS', '09': 'EYLÜL', '10': 'EKİM', '11': 'KASIM', '12': 'ARALIK'}
 keysENtoTR = {'date': 'SON GÜNCELLENME TARİHİ',
-              'daily': {'case': 'BUGÜNKÜ HASTA SAYISI', 'death': 'BUGÜNKÜ VEFAT SAYISI',
-                        'recovered': 'BUGÜNKÜ İYİLEŞEN SAYISI', 'test': 'BUGÜNKÜ TEST SAYISI'},
-              'total': {'case': 'TOPLAM HASTA SAYISI', 'death': 'TOPLAM VEFAT SAYISI',
+              'daily': {'case': 'BUGÜNKÜ VAKA SAYISI', 'death': 'BUGÜNKÜ VEFAT SAYISI',
+                        'recovered': 'BUGÜNKÜ İYİLEŞEN SAYISI', 'test': 'BUGÜNKÜ TEST SAYISI',
+                        'patient': 'BUGÜNKÜ HASTA SAYISI'},
+              'total': {'patient': 'TOPLAM HASTA SAYISI', 'death': 'TOPLAM VEFAT SAYISI',
                         'icuPatient': 'TOPLAM YOĞUN BAKIM HASTA SAYISI',
                         'intubatedPatient': 'TOPLAM ENTUBE HASTA SAYISI', 'recovered': 'TOPLAM İYİLEŞEN HASTA SAYISI',
                         'seriouslyIllPatient': 'AĞIR HASTA SAYISI', 'test': 'TOPLAM TEST SAYISI'},
@@ -78,10 +79,13 @@ def sendTelegram(stats, apiToken, chatID):
 def routine():
     global lastStats
 
-    stats = getStats(apiURL, apiEndpoint)
-    if (stats is not None) and (stats != lastStats):
-        lastStats = dict(stats)
-        sendTelegram(dict(lastStats), telegramAPIToken, telegramChatID)
+    try:
+        stats = getStats(apiURL, apiEndpoint)
+        if (stats is not None) and (stats != lastStats):
+            lastStats = dict(stats)
+            sendTelegram(dict(lastStats), telegramAPIToken, telegramChatID)
+    except Exception as e:
+        print(e)
 
 
 if __name__ == '__main__':
