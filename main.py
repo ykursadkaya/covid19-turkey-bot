@@ -65,7 +65,7 @@ def sendTelegram(stats, apiToken, chatID):
 
         headers = {'Content-Type': 'application/json'}
         payload = {'chat_id': chatID, 'parse_mode': 'MarkdownV2', 'text': text}
-        telegramURL = telegramURL = 'https://api.telegram.org/' + apiToken + '/sendMessage'
+        telegramURL = 'https://api.telegram.org/' + apiToken + '/sendMessage'
         try:
             response = requests.post(telegramURL, headers=headers, json=payload)
             print('Message status code:', response.status_code)
